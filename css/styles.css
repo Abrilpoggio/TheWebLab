@@ -639,6 +639,7 @@ h1, h2, h3 {
   .cursor-glow {
     width: 340px;
     height: 340px;
+    background: radial-gradient(circle, rgba(124, 92, 255, 0.16) 0%, rgba(0, 212, 184, 0.08) 40%, transparent 65%);
   }
 }
 
