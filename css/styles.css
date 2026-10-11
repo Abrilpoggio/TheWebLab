@@ -636,7 +636,10 @@ h1, h2, h3 {
 }
 
 @media (pointer: coarse) {
-  .cursor-glow { display: none; }
+  .cursor-glow {
+    width: 340px;
+    height: 340px;
+  }
 }
 
 /* Back to top */

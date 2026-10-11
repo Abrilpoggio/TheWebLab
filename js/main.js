@@ -56,19 +56,33 @@ document.querySelectorAll(".section-title, .section-sub, .card, .sobre-text, .so
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const glow = document.getElementById("cursorGlow");
-if (glow && finePointer && !prefersReducedMotion) {
+if (glow && !prefersReducedMotion) {
+  let h = glow.offsetWidth / 2;
+  window.addEventListener("resize", () => {
+    h = glow.offsetWidth / 2;
+  }, { passive: true });
+
   let x = window.innerWidth / 2;
   let y = window.innerHeight / 2;
   let tx = x;
   let ty = y;
+
   window.addEventListener("mousemove", (e) => {
     tx = e.clientX;
     ty = e.clientY;
   }, { passive: true });
+
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches.length > 0) {
+      tx = e.touches[0].clientX;
+      ty = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
   (function animate() {
     x += (tx - x) * 0.08;
     y += (ty - y) * 0.08;
-    glow.style.transform = `translate(${x - 260}px, ${y - 260}px)`;
+    glow.style.transform = `translate(${x - h}px, ${y - h}px)`;
     requestAnimationFrame(animate);
   })();
 }
