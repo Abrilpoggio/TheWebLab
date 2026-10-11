@@ -56,7 +56,7 @@ document.querySelectorAll(".section-title, .section-sub, .card, .sobre-text, .so
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const glow = document.getElementById("cursorGlow");
-if (glow && !prefersReducedMotion) {
+if (glow && finePointer && !prefersReducedMotion) {
   let h = glow.offsetWidth / 2;
   window.addEventListener("resize", () => {
     h = glow.offsetWidth / 2;
@@ -70,13 +70,6 @@ if (glow && !prefersReducedMotion) {
   window.addEventListener("mousemove", (e) => {
     tx = e.clientX;
     ty = e.clientY;
-  }, { passive: true });
-
-  window.addEventListener("touchmove", (e) => {
-    if (e.touches.length > 0) {
-      tx = e.touches[0].clientX;
-      ty = e.touches[0].clientY;
-    }
   }, { passive: true });
 
   (function animate() {
